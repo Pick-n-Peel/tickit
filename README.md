@@ -1,3 +1,7 @@
-# TickIt
+<p align="center">
+<img alt="tickit" src="docs/assets/logo-transparent.png" width="400">
+</p>
+
+---
 
 TickIt is a simple to-do list application built by the Pick'n Peel team (Anna B. Banana and Dillon P. Pickle).
