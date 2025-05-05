@@ -6,11 +6,18 @@
 
 TickIt is a simple to-do list application built by the Pick'n Peel team (Anna B. Banana and Dillon P. Pickle).
 
-## Frontend Stack
+## Frontend
 
-The frontend is built using the [Vite](https://vite.dev) build tool, and can be spun up locally with the `npm run dev` command.
+There are two frontend folders: the `frontend` folder contains the react version, and `frontend-vue` contains the vue version. Both of these versions are built using the [Vite](https://vite.dev) build tool, and can be spun up locally with the `npm run dev` command.
+
+### React
 
 - Routing: [Tanstack Router](https://tanstack.com/router/latest) for file-based routing
+- Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
+
+### Vue
+
+- Routing: [Vue Router](https://router.vuejs.org)
 - Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
 
 ## Backend Stack
