@@ -2,6 +2,15 @@ from tickit.models import Item, ItemList
 from rest_framework import serializers
 
 
+class OrderDefault:
+    requires_context = True
+
+    def __call__(self, serializer_field):
+        data = serializer_field.context.get("request").data
+        item_list = data.get("item_list")
+        return Item.objects.all().filter(item_list=item_list).count()
+
+
 class ItemListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ItemList
@@ -9,8 +18,8 @@ class ItemListSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    item_list_details = ItemListSerializer(source="item_list", read_only=True)
+    order = serializers.IntegerField(default=OrderDefault())
 
     class Meta:
         model = Item
-        fields = ["id", "text", "is_completed", "item_list", "item_list_details"]
+        fields = ["id", "text", "is_completed", "item_list", "order"]
