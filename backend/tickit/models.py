@@ -7,4 +7,4 @@ class ItemList(models.Model):
 class Item(models.Model):
     text = models.CharField(max_length=100)
     is_completed = models.BooleanField(default=False)
-    item_list = models.ForeignKey(ItemList, on_delete=models.CASCADE)
+    item_list = models.ForeignKey(ItemList, on_delete=models.CASCADE, related_name='item')
