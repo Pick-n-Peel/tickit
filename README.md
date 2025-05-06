@@ -14,11 +14,13 @@ There are two frontend folders: the `frontend` folder contains the react version
 
 - Routing: [Tanstack Router](https://tanstack.com/router/latest) for file-based routing
 - Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
+- Querying: [Tanstack (React)Query](https://tanstack.com/query/v5/docs/framework/react/overview)
 
 ### Vue
 
 - Routing: [Vue Router](https://router.vuejs.org)
 - Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
+- Querying: [Tanstack (Vue)Query)](https://tanstack.com/query/v5/docs/framework/vue/overview)
 
 ## Backend Stack
 
