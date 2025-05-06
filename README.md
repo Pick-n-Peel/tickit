@@ -8,16 +8,17 @@ TickIt is a simple to-do list application built by the Pick'n Peel team (Anna B.
 
 ## Frontend Stack
 
-The frontend was scaffolded using [Vite](https://vite.dev), and can be spun up locally with the `npm run dev` command.
+The frontend is built using the [Vite](https://vite.dev) build tool, and can be spun up locally with the `npm run dev` command.
 
-- Routing: [Tanstack Router](https://tanstack.com/router/latest)
+- Routing: [Tanstack Router](https://tanstack.com/router/latest) for file-based routing
+- Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
 
 ## Backend Stack
 
 The backend was created using Django and Django Rest Framework (DRF) and the database currently uses SQL lite. It can be spun up locally with the 'python backend/manage.py runserver' command.
 
 - Django: [Django]https://docs.djangoproject.com/en/5.2/
-Django rest [Django Rest Framework]Framework: https://www.django-rest-framework.org/
+- Django rest [Django Rest Framework]Framework: https://www.django-rest-framework.org/
 
 ## Pre-commit
 
