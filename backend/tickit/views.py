@@ -28,7 +28,7 @@ class ItemViewSet(viewsets.ModelViewSet):
             )
             adjustment = -1
 
-        elif new_order < current_order:
+        elif new_order <= current_order:
             items_to_reorder = self.queryset.all().filter(
                 item_list=item_list, order__gte=new_order, order__lt=current_order
             )
