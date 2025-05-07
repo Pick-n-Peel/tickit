@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { useQuery } from "@tanstack/vue-query";
-import { ref } from "vue";
 import NewListButton from "./NewListButton.vue";
-
-const selectedListId = ref(0);
+import { RouterLink } from "vue-router";
 
 const { data: lists } = useQuery({
   queryKey: ["lists"],
@@ -17,15 +15,15 @@ const { data: lists } = useQuery({
 <template>
   <div class="flex w-full justify-center items-center gap-2">
     <div role="tablist" class="w-fit tabs tabs-box">
-      <a
+      <RouterLink
         v-for="list in lists"
         :key="list.id"
+        :to="`/lists/${list.id}`"
         role="tab"
         class="tab"
-        :class="{ 'tab-active': selectedListId === list.id }"
-        @click="selectedListId = list.id"
+        :class="{ 'tab-active': $route.params.listId === list.id.toString() }"
         >{{ list.name }}
-      </a>
+      </RouterLink>
     </div>
     <div class="tooltip" data-tip="Add New List">
       <NewListButton />

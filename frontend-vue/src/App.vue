@@ -3,7 +3,10 @@ import ListTabs from "./components/ListTabs.vue";
 </script>
 
 <template>
-  <div className="p-10">
+  <nav class="flex h-[10vh] items-end">
     <ListTabs />
+  </nav>
+  <div class="h-[90vh]">
+    <RouterView />
   </div>
 </template>
