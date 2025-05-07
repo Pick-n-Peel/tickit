@@ -19,3 +19,9 @@ class ItemSerializer(serializers.ModelSerializer):
         item_list = validated_data["item_list"]
         validated_data["order"] = Item.objects.filter(item_list=item_list).count()
         return super().create(validated_data)
+
+
+class ItemOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ["order"]
