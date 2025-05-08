@@ -18,31 +18,30 @@ class ItemViewSet(viewsets.ModelViewSet):
     def reorder(self, request, *args, **kwargs):
         serializer = ItemOrderSerializer(data=request.data)
 
-        if serializer.is_valid(raise_exception=True):
-            new_order = request.data.get("order")
-            item_being_reordered = self.get_object()
-            item_list = item_being_reordered.item_list
-            current_order = item_being_reordered.order
-
-            if new_order > current_order:
-                items_to_reorder = self.queryset.all().filter(
-                    item_list=item_list, order__lte=new_order, order__gt=current_order
-                )
-                adjustment = -1
-
-            elif new_order <= current_order:
-                items_to_reorder = self.queryset.all().filter(
-                    item_list=item_list, order__gte=new_order, order__lt=current_order
-                )
-                adjustment = 1
-
-            for item in items_to_reorder:
-                item.order += adjustment
-                item.save()
-
-            item_being_reordered.order = new_order
-            item_being_reordered.save()
-
-            return Response({"status": "items reordered"})
-        else:
+        if not serializer.is_valid(raise_exception=True):
             return Response(serializer.errors)
+        new_order = request.data.get("order")
+        item_being_reordered = self.get_object()
+        item_list = item_being_reordered.item_list
+        current_order = item_being_reordered.order
+
+        if new_order > current_order:
+            items_to_reorder = self.queryset.all().filter(
+                item_list=item_list, order__lte=new_order, order__gt=current_order
+            )
+            adjustment = -1
+
+        elif new_order <= current_order:
+            items_to_reorder = self.queryset.all().filter(
+                item_list=item_list, order__gte=new_order, order__lt=current_order
+            )
+            adjustment = 1
+
+        for item in items_to_reorder:
+            item.order += adjustment
+            item.save()
+
+        item_being_reordered.order = new_order
+        item_being_reordered.save()
+
+        return Response({"status": "items reordered"})
