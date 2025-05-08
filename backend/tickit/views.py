@@ -20,10 +20,14 @@ class ItemViewSet(viewsets.ModelViewSet):
 
         if not serializer.is_valid(raise_exception=True):
             return Response(serializer.errors)
+
         new_order = request.data.get("order")
         item_being_reordered = self.get_object()
         item_list = item_being_reordered.item_list
         current_order = item_being_reordered.order
+
+        adjustment = 0
+        items_to_reorder = self.queryset.none()
 
         if new_order > current_order:
             items_to_reorder = self.queryset.all().filter(
@@ -31,7 +35,7 @@ class ItemViewSet(viewsets.ModelViewSet):
             )
             adjustment = -1
 
-        elif new_order <= current_order:
+        elif new_order < current_order:
             items_to_reorder = self.queryset.all().filter(
                 item_list=item_list, order__gte=new_order, order__lt=current_order
             )
