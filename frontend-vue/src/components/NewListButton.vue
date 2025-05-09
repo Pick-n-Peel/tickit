@@ -46,16 +46,19 @@ function onOpenDialog() {
   </button>
   <dialog id="add_list_dialog" ref="add_list_dialog" class="modal">
     <div class="modal-box">
-      <h3>Create New List</h3>
-      <input
-        ref="new_list_name"
-        placeholder="Enter Name"
-        class="input mt-4 w-full"
-        v-model="newListName"
-      />
-      <div class="modal-action">
-        <button class="btn btn-success" @click="onSubmit">Done</button>
-      </div>
+      <form @submit="onSubmit" method="dialog">
+        <input type="submit" class="hidden" />
+        <h3>Create New List</h3>
+        <input
+          ref="new_list_name"
+          placeholder="Enter Name"
+          class="input mt-4 w-full"
+          v-model="newListName"
+        />
+        <div class="modal-action">
+          <button class="btn btn-success">Done</button>
+        </div>
+      </form>
     </div>
     <form method="dialog" class="modal-backdrop">
       <button>close</button>
