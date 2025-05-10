@@ -9,8 +9,19 @@ class ItemListSerializer(serializers.ModelSerializer):
 
 
 class ItemSerializer(serializers.ModelSerializer):
-    item_list_details = ItemListSerializer(source="item_list", read_only=True)
+    order = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Item
-        fields = ["id", "text", "is_completed", "item_list", "item_list_details"]
+        fields = ["id", "text", "is_completed", "item_list", "order"]
+
+    def create(self, validated_data):
+        item_list = validated_data["item_list"]
+        validated_data["order"] = Item.objects.filter(item_list=item_list).count()
+        return super().create(validated_data)
+
+
+class ItemOrderSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ["order"]
