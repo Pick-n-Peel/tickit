@@ -18,7 +18,7 @@ class ItemViewSet(viewsets.ModelViewSet):
     def reorder(self, request, *args, **kwargs):
         serializer = ItemOrderSerializer(data=request.data)
 
-        if not serializer.is_valid(raise_exception=True):
+        if not serializer.is_valid():
             return Response(serializer.errors)
 
         new_order = request.data.get("order")
