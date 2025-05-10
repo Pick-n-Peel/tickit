@@ -21,6 +21,7 @@ There are two frontend folders: the `frontend` folder contains the react version
 - Routing: [Vue Router](https://router.vuejs.org)
 - Styling & Components: [TailwindCSS](https://tailwindcss.com) + [DaisyUI](daisyui.com)
 - Querying: [Tanstack (Vue)Query)](https://tanstack.com/query/v5/docs/framework/vue/overview)
+- Icons: [Lucide](https://lucide.dev)
 
 ## Backend Stack
 
